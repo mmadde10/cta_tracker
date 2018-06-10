@@ -24,5 +24,15 @@ class Arrival {
   String stopDestination;
   String routeColor;
 
+  Arrival({this.stopId, this.stationName, this.stopDestination, this.routeColor});
+
+  factory Arrival.fromJson(Map<String, dynamic> json) {
+    return new Arrival(
+      stopId: json['stopId'],
+      stationName: json['stationName'],
+      stopDestination: json['stopDestination'],
+      routeColor: json['routeColor'],
+    );
+  }
 
 }
