@@ -9,10 +9,11 @@ A Flutter Application for Tracking the CTA L train through location services.
  * Install the dependencies of the Flutter framework
 
 ### Install Flutter
-* [Install] (https://flutter.io/get-started/install/)
+[Install](https://flutter.io/get-started/install)
 
 ### Get Running
-A CTA API key is required for this project. To request one visit the [CTA API Website] (https://www.transitchicago.com/developers/traintracker/)
+A CTA API key is required for this project. To request one visit 
+[CTA API Website](https://www.transitchicago.com/developers/traintracker/)
 
 * Create a file config.dart in lib directory. Add the API key to the file.
 
