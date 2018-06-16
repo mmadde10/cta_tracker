@@ -1,14 +1,20 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'config.dart';
 import 'package:http/http.dart' as http;
 
-  String mapid = '40710';
-  String max = '5';
-//'http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx' + '?key=' + properties['ctakey'] + '&mapid='+ mapid + '&max=' + max + '&outputType=JSON',
+  int mapIDLocation = 40710;
+  int maxAmount = 5;
+  String mapID = '&mapid=' + mapIDLocation.toString();
+  String max = '&max=' + maxAmount.toString();
+  String baseURL = 'http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx';
+  String key = '?key=' + ctaKey;
+  String outputType = '&outputType=JSON';
+  String url = baseURL + key + mapID + max + outputType;
+
+
 Future<Arrival> fetchArrival() async {
-  final response = await http.get('');
+  final response = await http.get(url);
   final responseJson = json.decode(response.body);
   return new Arrival.fromJson(responseJson);
 }

@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'drawer.dart';
 import 'arrival_data.dart';
+import 'arrivalCard.dart';
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -21,24 +22,20 @@ class HomePage extends StatelessWidget {
         builder: (context,snapshot){
           if(snapshot.hasData){
             return new GridView.count(
-                primary: true,
-                padding: const EdgeInsets.all(20.0),
-                crossAxisSpacing: 10.0,
-                crossAxisCount: 2,
-                children: <Widget>[
-                   new Card(
-                    child: new Container(
-                      child: new Column(
-                        children: <Widget>[
-                          new Text((snapshot.data.routeColor)),
-                          new Text((snapshot.data.destinationName)),
-                          new Text((snapshot.data.arrivalTime))
-                        ],
-                      ),
-                      padding: const EdgeInsets.all(25.0),
-                    ),
-                  ),
-                ]
+              primary: true,
+              padding: const EdgeInsets.all(1.0),
+              crossAxisCount: 2,
+              childAspectRatio: 0.85,
+              mainAxisSpacing: 1.0,
+              crossAxisSpacing: 1.0,
+              children: <Widget>[
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+              ],
             );
           }
           else if (snapshot.hasError){
@@ -52,7 +49,7 @@ class HomePage extends StatelessWidget {
           }
           return new CircularProgressIndicator();
         }
-      ) ,
+      ),
     )
     );
   }
