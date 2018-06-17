@@ -21,26 +21,23 @@ class HomePage extends StatelessWidget {
         future: fetchArrival(),
         builder: (context,snapshot){
           if(snapshot.hasData){
-            return new Container(
-              constraints: new BoxConstraints.expand(
-                height: Theme.of(context).textTheme.display1.fontSize * 1.1 + 200.0,
-              ),
-              child: new GridView.count(
-                primary: true,
-                padding: const EdgeInsets.all(1.0),
-                crossAxisCount: 2,
-                childAspectRatio: 0.85,
-                mainAxisSpacing: 1.0,
-                crossAxisSpacing: 1.0,
-                children: <Widget>[
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                ],
-              )
+            return new GridView.count(
+              primary: true,
+              padding: const EdgeInsets.all(1.0),
+              crossAxisCount: 2,
+              childAspectRatio: 0.85,
+              mainAxisSpacing: 1.0,
+              crossAxisSpacing: 1.0,
+              children: <Widget>[
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+                getStructuredGridCell(snapshot.data),
+              ],
             );
           }
           else if (snapshot.hasError){

@@ -15,10 +15,38 @@ Card getStructuredGridCell(data){
         mainAxisSize: MainAxisSize.min,
         verticalDirection: VerticalDirection.down,
         children: <Widget>[
-          new Text((data.destinationName)),
-          new Text((data.arrivalTime))
+          new Center(
+              child: new Text(
+                  '2', //Placement text for minutes
+                  style: new TextStyle(
+                    fontSize: 60.0,
+                    fontFamily: 'Roboto',
+                    color: new Color(0xFFFFFFFF),
+                  )
+              )
+          ),
+          new Center(
+              child: new Text(
+                  'minutes', //placeholder for min, will go away when its due
+                  style: new TextStyle(
+                    fontSize: 15.0,
+                    fontFamily: 'Roboto',
+                    color: new Color(0xFFFFFFFF),
+                  )
+              )
+          ),
+          new Center(
+            child: new Text(
+                    data.destinationName,
+                    style: new TextStyle(
+                      fontSize: 25.0,
+                      fontFamily: 'Roboto',
+                      color: new Color(0xFFFFFFFF),
+                )
+            )
+          )
         ],
       ),
       color: getColor(data.routeColor)
-    );
+  );
 }
