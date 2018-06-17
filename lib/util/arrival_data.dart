@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
-import 'config.dart';
+import '../config.dart';
 import 'package:http/http.dart' as http;
 
-  int mapIDLocation = 40710;
-  int maxAmount = 5;
+  int mapIDLocation = 40710; //TODO mapId brought in from location services
+  int maxAmount = 10;
   String mapID = '&mapid=' + mapIDLocation.toString();
   String max = '&max=' + maxAmount.toString();
   String baseURL = 'http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx';
@@ -16,6 +16,7 @@ import 'package:http/http.dart' as http;
 Future<Arrival> fetchArrival() async {
   final response = await http.get(url);
   final responseJson = json.decode(response.body);
+  print(responseJson);
   return new Arrival.fromJson(responseJson);
 }
 
@@ -32,8 +33,10 @@ class Arrival {
 
   Arrival({this.stopId, this.stationName, this.stopDestination, this.routeColor, this.destinationName, this.arrivalTime, this.latitude, this.longitude});
 
+
   factory Arrival.fromJson(Map<String, dynamic> json) {
     Map<int, dynamic> responseMap = json['ctatt']['eta'].asMap();
+
     return new Arrival(
       stopId: responseMap[0]['stpId'],
       stationName: responseMap[0]['staNm'],

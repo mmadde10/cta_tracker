@@ -18,7 +18,5 @@ A CTA API key is required for this project. To request one visit
 * Create a file config.dart in lib directory. Add the API key to the file.
 
     ```dart
-    const Map properties = const {
-        'CTAkey': 'YOUR CTA API KEY HERE'
-    };
+    const ctaKey = 'YOUR CTA API KEY HERE';
     ```
