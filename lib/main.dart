@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'homepage.dart';
+import 'package:cta_tracker/screens/home_screen.dart';
 
 void main() => runApp(new MyApp());
 

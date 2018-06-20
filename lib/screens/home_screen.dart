@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'drawer.dart';
-import 'package:cta_tracker/util/arrival_data.dart';
-import 'arrivalCard.dart';
+import 'main_drawer.dart';
+import 'package:cta_tracker/middleware/arrival_data.dart';
+import 'components/arrivalCard.dart';
+import 'error_screens/location_error.dart';
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -12,7 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      drawer: new HomeDrawer(),
+      drawer: new MainDrawer(),
       appBar: new AppBar(
         title: new Text(title),
       ),
@@ -44,12 +45,18 @@ class HomePage extends StatelessWidget {
             return new Center(
               child: new Card(
                 child: new Center(
-                  child: new Text("${snapshot.error}"),
+                  child: getLocationError(),
                 ),
               ),
             );
           }
-          return new CircularProgressIndicator();
+          return new Center(
+            child: new Card(
+              child: new Center(
+                child: new CircularProgressIndicator(),
+              ),
+            ),
+          );
         }
       ),
     )

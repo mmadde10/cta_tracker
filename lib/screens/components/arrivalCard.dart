@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'util/color.dart';
+import 'package:cta_tracker/styles/color.dart';
 
 Color getColor(routeColor){
  for(var c in myCardColors){
