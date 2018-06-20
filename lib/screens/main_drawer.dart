@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-class HomeDrawer extends StatelessWidget{
+class MainDrawer extends StatelessWidget{
    @override
   Widget build(BuildContext context) {
     return new Drawer(
