@@ -4,6 +4,7 @@ import 'main_drawer.dart';
 import 'package:cta_tracker/middleware/arrival_data.dart';
 import 'components/arrivalCard.dart';
 import 'error_screens/location_error.dart';
+import 'loading_screen.dart';
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -51,11 +52,7 @@ class HomePage extends StatelessWidget {
             );
           }
           return new Center(
-            child: new Card(
-              child: new Center(
-                child: new CircularProgressIndicator(),
-              ),
-            ),
+            child: getLoadingScreen(),
           );
         }
       ),

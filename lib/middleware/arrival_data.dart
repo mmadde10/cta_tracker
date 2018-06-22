@@ -30,8 +30,10 @@ class Arrival {
   dynamic arrivalTime;
   dynamic latitude;
   dynamic longitude;
+  dynamic predictedTime;
+  dynamic isApproaching;
 
-  Arrival({this.stopId, this.stationName, this.stopDestination, this.routeColor, this.destinationName, this.arrivalTime, this.latitude, this.longitude});
+  Arrival({this.stopId, this.stationName, this.stopDestination, this.routeColor, this.destinationName, this.arrivalTime, this.latitude, this.longitude, this.predictedTime,this.isApproaching});
 
 
   factory Arrival.fromJson(Map<String, dynamic> json) {
@@ -44,7 +46,9 @@ class Arrival {
       routeColor: responseMap[0]['rt'],
       destinationName: responseMap[0]['destNm'],
       arrivalTime: responseMap[0]['arrT'],
+      predictedTime: responseMap[0]['prdt'],
       latitude: responseMap[0]['lat'],
+      isApproaching: responseMap[0]['isApp'],
       longitude: responseMap[0]['lon']
     );
   }
