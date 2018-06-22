@@ -100,3 +100,4 @@ unlinked_spec.ds
 
 
 *.log
+pubspec.lock
