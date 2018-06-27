@@ -5,6 +5,7 @@ import 'package:cta_tracker/middleware/arrival_data.dart';
 import 'components/arrivalCard.dart';
 import 'error_screens/location_error.dart';
 import 'loading_screen.dart';
+import 'components/station_name.dart';
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -23,24 +24,24 @@ class HomePage extends StatelessWidget {
         future: fetchArrival(),
         builder: (context,snapshot){
           if(snapshot.hasData){
-            return new GridView.count(
-              primary: true,
-              padding: const EdgeInsets.all(1.0),
-              crossAxisCount: 2,
-              childAspectRatio: 0.85,
-              mainAxisSpacing: 1.0,
-              crossAxisSpacing: 1.0,
-              children: <Widget>[
-                getStructuredGridCell(snapshot.data),
-                getStructuredGridCell(snapshot.data),
-                getStructuredGridCell(snapshot.data),
-                getStructuredGridCell(snapshot.data),
-                getStructuredGridCell(snapshot.data),
-                getStructuredGridCell(snapshot.data),
-                getStructuredGridCell(snapshot.data),
-                getStructuredGridCell(snapshot.data),
-              ],
-            );
+                new GridView.count(
+                  primary: true,
+                  padding: const EdgeInsets.all(1.0),
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.85,
+                  mainAxisSpacing: 1.0,
+                  crossAxisSpacing: 1.0,
+                children: <Widget>[
+                  getStructuredGridCell(snapshot.data),
+                  getStructuredGridCell(snapshot.data),
+                  getStructuredGridCell(snapshot.data),
+                  getStructuredGridCell(snapshot.data),
+                  getStructuredGridCell(snapshot.data),
+                  getStructuredGridCell(snapshot.data),
+                  getStructuredGridCell(snapshot.data),
+                  getStructuredGridCell(snapshot.data),
+                  ]
+                );
           }
           else if (snapshot.hasError){
             return new Center(

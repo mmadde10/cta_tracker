@@ -7,7 +7,8 @@ Container getLocationError(){
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Text(
-              "Error Retreving Location. Please Select your Station"
+              "Error Retreving Location. Please Select your Station",
+              style: new TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
             ),
           ]
         )

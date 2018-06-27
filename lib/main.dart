@@ -6,7 +6,7 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appName = 'My L Trains';
+    final appName = 'Home';
 
     return new MaterialApp(
       title: appName,
