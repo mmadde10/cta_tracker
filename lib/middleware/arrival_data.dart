@@ -3,8 +3,8 @@ import 'dart:convert';
 import '../config.dart';
 import 'package:http/http.dart' as http;
 
-  int mapIDLocation = 40710; //TODO mapId brought in from location services
-  int maxAmount = 10;
+  int mapIDLocation = 41220; //TODO mapId brought in from location services
+  int maxAmount = 15;
   String mapID = '&mapid=' + mapIDLocation.toString();
   String max = '&max=' + maxAmount.toString();
   String baseURL = 'http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx';

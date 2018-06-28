@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
  const List<CardColor> myCardColors = const <CardColor>[
     const CardColor(const Color(0xFF565A5C), 'grey'), //good
-    const CardColor(const Color(0xFFC6C30),  'red'), //good
+    const CardColor(const Color(0xFFC60C30),  'red'), //good
     const CardColor(const Color(0xFF00A1DE), 'blue'), //good
     const CardColor(const Color(0xFF62361B), 'Brn'), //good
     const CardColor(const Color(0xFF009B3A), 'G'), //good
