@@ -33,26 +33,6 @@ List<Widget> addArrivalTile(snapshot){
   return arrivalTileList;
 }
 
-
-
-
-List<StaggeredTile> _staggeredTiles = const <StaggeredTile>[
-  const StaggeredTile.count(4, 1),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-
-];
-
-
-
 class StationGridView extends StatelessWidget{
   const StationGridView(this.data);
   final dynamic data;
