@@ -10,9 +10,45 @@ getColor(routeColor){
   }
 }
 
+List<StaggeredTile> addStaggeredTiles(snapshot){
+
+  List<StaggeredTile> staggeredTilesList = new List();
+  const longTile =  StaggeredTile.count(4, 1);
+  const smallTile = StaggeredTile.count(2, 2);
+
+  staggeredTilesList.add(longTile);
+
+  for(var i in snapshot.data.response.keys){
+    staggeredTilesList.add(smallTile);
+  }
+  return staggeredTilesList;
+}
+
+List<Widget> addArrivalTile(snapshot){
+  List<Widget> arrivalTileList = new List();
+  arrivalTileList.add(StationNameTile(snapshot.data.response[0]));
+  for(var i in snapshot.data.response.keys){
+    arrivalTileList.add(_ArrivalTile(snapshot.data.response[i]));
+  }
+  return arrivalTileList;
+}
+
+
+
+
 List<StaggeredTile> _staggeredTiles = const <StaggeredTile>[
   const StaggeredTile.count(4, 1),
-  const StaggeredTile.count(2, 4),
+  const StaggeredTile.count(2, 2),
+  const StaggeredTile.count(2, 2),
+  const StaggeredTile.count(2, 2),
+  const StaggeredTile.count(2, 2),
+  const StaggeredTile.count(2, 2),
+  const StaggeredTile.count(2, 2),
+  const StaggeredTile.count(2, 2),
+  const StaggeredTile.count(2, 2),
+  const StaggeredTile.count(2, 2),
+  const StaggeredTile.count(2, 2),
+
 ];
 
 
@@ -27,20 +63,8 @@ class StationGridView extends StatelessWidget{
       primary: true,
       padding: const EdgeInsets.all(1.0),
       crossAxisCount: 4,
-      staggeredTiles: _staggeredTiles,
-      children: <Widget>[
-        StationNameTile(this.data),
-        _ArrivalTile(this.data),
-        _ArrivalTile(this.data),
-        _ArrivalTile(this.data),
-        _ArrivalTile(this.data),
-        _ArrivalTile(this.data),
-        _ArrivalTile(this.data),
-        _ArrivalTile(this.data),
-        _ArrivalTile(this.data),
-        _ArrivalTile(this.data),
-        _ArrivalTile(this.data)
-      ],
+      staggeredTiles: addStaggeredTiles(this.data),
+      children: addArrivalTile(this.data),
       mainAxisSpacing: 1.0,
       crossAxisSpacing: 1.0,
     );
@@ -64,7 +88,7 @@ class _ArrivalTile extends StatelessWidget {
                 padding: new EdgeInsets.fromLTRB(00.0, 10.0, 8.0, 8.0),
                 child: new Center(
                   child: new Text(
-                      calculateArrivalTime(snapshot.data),
+                      calculateArrivalTime(snapshot),
                       style: new TextStyle(
                         fontSize: 50.0,
                         fontFamily: 'Roboto',
@@ -76,7 +100,7 @@ class _ArrivalTile extends StatelessWidget {
             new Padding(padding: new EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 8.0),
               child: new Center(
                   child: new Text(
-                      displayTimeUnits(snapshot.data),
+                      displayTimeUnits(snapshot),
                       style: new TextStyle(
                         fontSize: 15.0,
                         fontFamily: 'Roboto',
@@ -89,7 +113,7 @@ class _ArrivalTile extends StatelessWidget {
                 padding: new EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 8.0),
                 child: new Center(
                     child: new Text(
-                        snapshot.data.destinationName,
+                        snapshot['destNm'],
                         style: new TextStyle(
                           fontSize: 25.0,
                           fontFamily: 'Roboto',
@@ -100,7 +124,7 @@ class _ArrivalTile extends StatelessWidget {
             )
           ],
         ),
-        color: getColor(snapshot.data.routeColor)
+        color: getColor(snapshot['rt'])
     );
   }
 }
@@ -116,7 +140,7 @@ class StationNameTile extends StatelessWidget {
         child: new Center(
             child: new ListTile(
                 title: new Text(
-                    snapshot.data.stationName.toString(),
+                    snapshot['staNm'].toString(),
                     style: new TextStyle(
                         fontSize: 20.0,
                         fontFamily: 'Roboto'

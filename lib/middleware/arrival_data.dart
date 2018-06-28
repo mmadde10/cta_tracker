@@ -16,7 +16,6 @@ import 'package:http/http.dart' as http;
 Future<Arrival> fetchArrival() async {
   final response = await http.get(url);
   final responseJson = json.decode(response.body);
-  print(responseJson);
   return new Arrival.fromJson(responseJson);
 }
 
@@ -32,24 +31,16 @@ class Arrival {
   dynamic longitude;
   dynamic predictedTime;
   dynamic isApproaching;
+  dynamic response;
 
-  Arrival({this.stopId, this.stationName, this.stopDestination, this.routeColor, this.destinationName, this.arrivalTime, this.latitude, this.longitude, this.predictedTime,this.isApproaching});
+  Arrival({this.stopId, this.stationName, this.stopDestination, this.routeColor, this.destinationName, this.arrivalTime, this.latitude, this.longitude, this.predictedTime,this.isApproaching, this.response});
 
 
   factory Arrival.fromJson(Map<String, dynamic> json) {
     Map<int, dynamic> responseMap = json['ctatt']['eta'].asMap();
 
     return new Arrival(
-      stopId: responseMap[0]['stpId'],
-      stationName: responseMap[0]['staNm'],
-      stopDestination: responseMap[0]['stpDe'],
-      routeColor: responseMap[0]['rt'],
-      destinationName: responseMap[0]['destNm'],
-      arrivalTime: responseMap[0]['arrT'],
-      predictedTime: responseMap[0]['prdt'],
-      latitude: responseMap[0]['lat'],
-      isApproaching: responseMap[0]['isApp'],
-      longitude: responseMap[0]['lon']
+     response: responseMap
     );
   }
 }
