@@ -12,30 +12,9 @@ getColor(routeColor){
 
 List<StaggeredTile> _staggeredTiles = const <StaggeredTile>[
   const StaggeredTile.count(4, 1),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2),
-  const StaggeredTile.count(2, 2)
+  const StaggeredTile.count(2, 4),
 ];
 
-List<Widget> _tiles = const <Widget>[
-  const _Example01Tile(Colors.green, Icons.widgets),
-  const _Example01Tile(Colors.lightBlue, Icons.wifi),
-  const _Example01Tile(Colors.amber, Icons.panorama_wide_angle),
-  const _Example01Tile(Colors.brown, Icons.map),
-  const _Example01Tile(Colors.deepOrange, Icons.send),
-  const _Example01Tile(Colors.indigo, Icons.airline_seat_flat),
-  const _Example01Tile(Colors.red, Icons.bluetooth),
-  const _Example01Tile(Colors.pink, Icons.battery_alert),
-  const _Example01Tile(Colors.purple, Icons.desktop_windows),
-  const _Example01Tile(Colors.blue, Icons.radio),
-];
 
 
 class StationGridView extends StatelessWidget{
@@ -49,18 +28,28 @@ class StationGridView extends StatelessWidget{
       padding: const EdgeInsets.all(1.0),
       crossAxisCount: 4,
       staggeredTiles: _staggeredTiles,
-      children: _tiles,
+      children: <Widget>[
+        StationNameTile(this.data),
+        _ArrivalTile(this.data),
+        _ArrivalTile(this.data),
+        _ArrivalTile(this.data),
+        _ArrivalTile(this.data),
+        _ArrivalTile(this.data),
+        _ArrivalTile(this.data),
+        _ArrivalTile(this.data),
+        _ArrivalTile(this.data),
+        _ArrivalTile(this.data),
+        _ArrivalTile(this.data)
+      ],
       mainAxisSpacing: 1.0,
       crossAxisSpacing: 1.0,
     );
   }
 }
 
-class _Example01Tile extends StatelessWidget {
-  const _Example01Tile(this.backgroundColor, this.iconData);
-
-  final Color backgroundColor;
-  final IconData iconData;
+class _ArrivalTile extends StatelessWidget {
+  const _ArrivalTile(this.snapshot);
+  final dynamic snapshot;
 
   @override
   Widget build(BuildContext context) {
@@ -72,10 +61,10 @@ class _Example01Tile extends StatelessWidget {
           verticalDirection: VerticalDirection.down,
           children: <Widget>[
             new Padding(
-                padding: new EdgeInsets.fromLTRB(00.0, 25.0, 8.0, 8.0),
+                padding: new EdgeInsets.fromLTRB(00.0, 10.0, 8.0, 8.0),
                 child: new Center(
                   child: new Text(
-                      calculateArrivalTime(data), //Placement text for minutes
+                      calculateArrivalTime(snapshot.data),
                       style: new TextStyle(
                         fontSize: 50.0,
                         fontFamily: 'Roboto',
@@ -87,8 +76,7 @@ class _Example01Tile extends StatelessWidget {
             new Padding(padding: new EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 8.0),
               child: new Center(
                   child: new Text(
-                      displayTimeUnits(data),
-                      //placeholder for min, will go away when its due
+                      displayTimeUnits(snapshot.data),
                       style: new TextStyle(
                         fontSize: 15.0,
                         fontFamily: 'Roboto',
@@ -98,10 +86,10 @@ class _Example01Tile extends StatelessWidget {
               ),
             ),
             new Padding(
-                padding: new EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 8.0),
+                padding: new EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 8.0),
                 child: new Center(
                     child: new Text(
-                        data.destinationName,
+                        snapshot.data.destinationName,
                         style: new TextStyle(
                           fontSize: 25.0,
                           fontFamily: 'Roboto',
@@ -112,7 +100,34 @@ class _Example01Tile extends StatelessWidget {
             )
           ],
         ),
-        color: getColor(data.routeColor)
+        color: getColor(snapshot.data.routeColor)
+    );
+  }
+}
+
+class StationNameTile extends StatelessWidget {
+  const StationNameTile(this.snapshot);
+  final dynamic snapshot;
+
+  @override
+  Widget build(BuildContext context){
+    return new Card(
+        elevation: 2.0,
+        child: new Center(
+            child: new ListTile(
+                title: new Text(
+                    snapshot.data.stationName.toString(),
+                    style: new TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'Roboto'
+                    ),
+                ),
+                leading: new Icon(
+                  Icons.location_on,
+                  color: Colors.blue[500],
+                )
+            )
+        )
     );
   }
 }

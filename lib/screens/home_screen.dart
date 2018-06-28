@@ -2,10 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'main_drawer.dart';
 import 'package:cta_tracker/middleware/arrival_data.dart';
-import 'components/arrivalCard.dart';
 import 'error_screens/location_error.dart';
 import 'loading_screen.dart';
-import 'components/station_name.dart';
+import 'components/station_gridview.dart';
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -24,24 +23,7 @@ class HomePage extends StatelessWidget {
         future: fetchArrival(),
         builder: (context,snapshot){
           if(snapshot.hasData){
-                new GridView.count(
-                  primary: true,
-                  padding: const EdgeInsets.all(1.0),
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.85,
-                  mainAxisSpacing: 1.0,
-                  crossAxisSpacing: 1.0,
-                children: <Widget>[
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                  getStructuredGridCell(snapshot.data),
-                  ]
-                );
+               return new StationGridView(snapshot);
           }
           else if (snapshot.hasError){
             return new Center(
@@ -53,7 +35,7 @@ class HomePage extends StatelessWidget {
             );
           }
           return new Center(
-            child: getLoadingScreen(),
+            child: getLoadingScreen(snapshot),
           );
         }
       ),

@@ -16,6 +16,7 @@ import 'package:http/http.dart' as http;
 Future<Arrival> fetchArrival() async {
   final response = await http.get(url);
   final responseJson = json.decode(response.body);
+  print(responseJson);
   return new Arrival.fromJson(responseJson);
 }
 
