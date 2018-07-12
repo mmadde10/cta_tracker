@@ -18,8 +18,6 @@ class MainDrawer extends StatelessWidget{
 // One entry in the multilevel list displayed by this app.
 class Entry {
   Entry(this.title, [this.children = const <Entry>[]]);
-  final int tileColorValue;
-
   final String title;
   final List<Entry> children;
 }
