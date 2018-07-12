@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
  const List<CardColor> myCardColors = const <CardColor>[
-    const CardColor(const Color(0xFF565A5C), 'grey'), //good
-    const CardColor(const Color(0xFFC60C30),  'red'), //good
-    const CardColor(const Color(0xFF00A1DE), 'blue'), //good
-    const CardColor(const Color(0xFF62361B), 'Brn'), //good
-    const CardColor(const Color(0xFF009B3A), 'G'), //good
-    const CardColor(const Color(0xFFF9461C), 'Org'), //Good
-    const CardColor(const Color(0xFF522398), 'P'), //good
-    const CardColor(const Color(0xFFE27EA6), 'Pink'), //good
+    const CardColor(const Color(0xFF565A5C), 'grey'),
+    const CardColor(const Color(0xFFC60C30),  'red'),
+    const CardColor(const Color(0xFF62361B), 'Brn'),
+    const CardColor(const Color(0xFFF9461C), 'Org'),
+    const CardColor(const Color(0xFF522398), 'P'),
+    const CardColor(const Color(0xFF00A1DE), 'blue'),
+    const CardColor(const Color(0xFF009B3A), 'G'),
+    const CardColor(const Color(0xFFE27EA6), 'Pink'),
     const CardColor(const Color(0xFFF9E300), 'Y'),
  ];
 
@@ -18,4 +18,10 @@ class CardColor {
 
   final Color color;
   final String name;
+}
+
+getColor(routeColor){
+  for(var c in myCardColors){
+    if(routeColor.toString().toLowerCase() == c.name.toString().toLowerCase()) return c.color;
+  }
 }
