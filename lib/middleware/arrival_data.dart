@@ -3,6 +3,7 @@ import 'dart:convert';
 import '../config.dart';
 import 'package:http/http.dart' as http;
 
+//TODO Beautify this function
 String buildURL(mapLocation){
   int maxAmount = 15; //wont need more than 10 but 15 to be safe
   String mapID = '&mapid=' + mapLocation.toString();
@@ -16,8 +17,7 @@ String buildURL(mapLocation){
 }
 
 Future<Arrival> fetchArrival(location) async {
-  print(location);
-  String url = buildURL(41220);
+  String url = buildURL(41220); //hard coded for now
   final response = await http.get(url);
   final responseJson = json.decode(response.body);
   return new Arrival.fromJson(responseJson);

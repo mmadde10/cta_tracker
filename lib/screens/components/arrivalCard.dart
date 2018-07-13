@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cta_tracker/styles/color.dart';
 import '../../actions/time.dart';
 
-getColor(routeColor){
- for(var c in myCardColors){
-    if(routeColor.toString().toLowerCase() == c.name.toString().toLowerCase()) return c.color;
- }
-}
-
 Card getStructuredGridCell(data){
   return new Card(
       elevation: 1.5,

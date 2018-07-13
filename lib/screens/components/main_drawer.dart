@@ -82,21 +82,55 @@ final List<dynamic> data = <dynamic>[
   ),
 ];
 
-// Displays one Entry. If the entry has children then it's displayed
-// with an ExpansionTile.
-class EntryItem extends StatelessWidget {
-  const EntryItem(this.entry,this.entryColor);
+class EntryItem extends StatefulWidget {
+
+  EntryItem(this.entry,this.entryColor);
   final Entry entry;
   final CardColor entryColor;
 
+  @override
+  _EntryItemState createState() {
+   return new _EntryItemState(this.entry,this.entryColor);
+  }
+}
+
+
+
+// Displays one Entry. If the entry has children then it's displayed
+// with an ExpansionTile.
+class _EntryItemState extends State<EntryItem> {
+  _EntryItemState(this.entry,this.entryColor);
+  final Entry entry;
+  final CardColor entryColor;
+  Color textColor = Colors.white10;
+
+  _changeTextColor(){
+      setState(() {
+        textColor = Colors.black;
+      });
+  }
+
   Widget _buildTiles(Entry root) {
-    if (root.children.isEmpty) return ListTile(title: Text(root.title));
+    if (root.children.isEmpty)
+      return ListTile(
+        title: Text(
+            root.title, //Station Names for that Line color
+            style: new TextStyle(
+                color: Colors.white
+            )
+        )
+    );
     return ExpansionTile(
+      onExpansionChanged: _changeTextColor(),
+      leading:new Icon(
+        Icons.train,
+        color: entryColor.color,
+      ),
       backgroundColor: entryColor.color,
       key: PageStorageKey<dynamic>(root),
       title: Text(
-          root.title,
-          style: new TextStyle(color: Colors.black.withOpacity(1.0))
+          root.title, //Line color
+          style: new TextStyle(color: textColor)
       ),
       children: root.children.map(_buildTiles).toList(),
     );
