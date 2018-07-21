@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cta_tracker/styles/color.dart';
+import '../../actions/stations.dart';
+import '../home_screen.dart';
 
 class MainDrawer extends StatelessWidget{
   @override
@@ -17,70 +19,13 @@ class MainDrawer extends StatelessWidget{
 
 // One entry in the multilevel list displayed by this app.
 class Entry {
-  Entry(this.title, [this.children = const <Entry>[]]);
+  Entry(this.title, this.stationID,[this.children = const <Entry>[]]);
   final String title;
   final List<Entry> children;
+  final int stationID;
 }
 
 // The entire multilevel list displayed by this app.
-final List<dynamic> data = <dynamic>[
-  Entry(
-    'Red Line',
-    <Entry>[
-      Entry('Section A1'),
-      Entry('Section A2'),
-    ],
-  ),
-  Entry(
-    'Brown Line',
-    <Entry>[
-      Entry('Section B0'),
-      Entry('Section B1'),
-    ],
-  ),
-  Entry(
-    'Orange Line',
-    <Entry>[
-      Entry('Section C0'),
-      Entry('Section C1'),
-    ],
-  ),
-  Entry(
-    'Purple Line',
-    <Entry>[
-      Entry('Section C0'),
-      Entry('Section C1'),
-    ],
-  ),
-  Entry(
-    'Blue Line',
-    <Entry>[
-      Entry('Section C0'),
-      Entry('Section C1'),
-    ],
-  ),
-  Entry(
-    'Green Line',
-    <Entry>[
-      Entry('Section C0'),
-      Entry('Section C1'),
-    ],
-  ),
-  Entry(
-    'Pink Line',
-    <Entry>[
-      Entry('Section C0'),
-      Entry('Section C1'),
-    ],
-  ),
-  Entry(
-    'Yellow Line',
-    <Entry>[
-      Entry('Section C0'),
-      Entry('Section C1'),
-    ],
-  ),
-];
 
 class EntryItem extends StatefulWidget {
 
@@ -118,7 +63,14 @@ class _EntryItemState extends State<EntryItem> {
             style: new TextStyle(
                 color: Colors.white
             )
-        )
+        ),
+        onTap: (){
+          print('pressed');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage(title: root.title,)),
+          );
+        },
     );
     return ExpansionTile(
       onExpansionChanged: _changeTextColor(),

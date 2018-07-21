@@ -5,49 +5,25 @@ import 'package:cta_tracker/middleware/arrival_data.dart';
 import 'package:cta_tracker/screens/components/loading_screen.dart';
 import 'components/station_gridview.dart';
 import 'error_screens/http_error.dart';
-import 'package:location/location.dart';
-import 'dart:async';
 
 
 class HomeLocationPage extends StatefulWidget {
+  final int stationID;
+  HomeLocationPage(this.stationID);
   @override
-  HomeLocationPageState createState() => new HomeLocationPageState();
+  HomeLocationPageState createState() => new HomeLocationPageState(stationID);
   final locations = [];
 
 }
 
 class HomeLocationPageState extends State<HomeLocationPage> {
-  Location _location = new Location();
-  Map<String, double> currentLocation;
-
-
-  Future<Null> findUserLocation() async {
-    Map<String, double> location;
-    try {
-      location = await _location.getLocation;
-      setState(() {
-        currentLocation = {
-          "latitude": location["latitude"],
-          "longitude": location['longitude'],
-        };
-      });
-      print(currentLocation);
-    } catch (exception) {}
-  }
-
-
-  @override
-  void initState() {
-    super.initState();
-    findUserLocation();
-  }
-
-
+  final int stationID;
+  HomeLocationPageState(this.stationID);
   @override
   Widget build(BuildContext context) {
       return new Container(
         child: new FutureBuilder<Arrival>(
-            future: fetchArrival(currentLocation),
+            future: fetchArrival(stationID),
             builder: (context,snapshot){
               if(snapshot.hasData){
                 return new StationGridView(snapshot);
@@ -70,10 +46,9 @@ class HomeLocationPageState extends State<HomeLocationPage> {
   }
 }
 
-
-
 class HomePage extends StatelessWidget {
   final String title;
+  final int stationID;
 
   HomePage({Key key,this.title}) : super(key: key);
 
@@ -85,7 +60,7 @@ class HomePage extends StatelessWidget {
         title: new Text(title),
       ),
       body: new Container(
-        child: HomeLocationPage(),
+        child: HomeLocationPage(1123),
       ),
     );
   }
