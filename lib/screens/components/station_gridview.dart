@@ -9,8 +9,6 @@ List<StaggeredTile> addStaggeredTiles(snapshot){
   const longTile =  StaggeredTile.count(4, 1);
   const smallTile = StaggeredTile.count(2, 2);
 
-  staggeredTilesList.add(longTile);
-
   for(var i in snapshot.data.response.keys){
     staggeredTilesList.add(smallTile);
   }
@@ -19,7 +17,6 @@ List<StaggeredTile> addStaggeredTiles(snapshot){
 
 List<Widget> addArrivalTile(snapshot){
   List<Widget> arrivalTileList = new List();
-  arrivalTileList.add(StationNameTile(snapshot.data.response[0]));
   for(var i in snapshot.data.response.keys){
     arrivalTileList.add(_ArrivalTile(snapshot.data.response[i]));
   }

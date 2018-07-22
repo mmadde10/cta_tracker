@@ -65,10 +65,10 @@ class _EntryItemState extends State<EntryItem> {
             )
         ),
         onTap: (){
-          print('pressed');
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HomePage(title: root.title,)),
+            MaterialPageRoute(builder: (context) => HomePage(title: root.title,
+                stationID: root.stationID)),
           );
         },
     );

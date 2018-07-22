@@ -6,14 +6,11 @@ import 'package:cta_tracker/screens/components/loading_screen.dart';
 import 'components/station_gridview.dart';
 import 'error_screens/http_error.dart';
 
-
 class HomeLocationPage extends StatefulWidget {
   final int stationID;
   HomeLocationPage(this.stationID);
   @override
   HomeLocationPageState createState() => new HomeLocationPageState(stationID);
-  final locations = [];
-
 }
 
 class HomeLocationPageState extends State<HomeLocationPage> {
@@ -50,7 +47,7 @@ class HomePage extends StatelessWidget {
   final String title;
   final int stationID;
 
-  HomePage({Key key,this.title}) : super(key: key);
+  HomePage({Key key,this.title, this.stationID}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +57,7 @@ class HomePage extends StatelessWidget {
         title: new Text(title),
       ),
       body: new Container(
-        child: HomeLocationPage(1123),
+        child: HomeLocationPage(stationID),
       ),
     );
   }

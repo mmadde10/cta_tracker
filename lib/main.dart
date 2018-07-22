@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       ),
       home: new HomePage(
         title: appName,
+        stationID: 41220,
       ),
     );
   }

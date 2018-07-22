@@ -16,8 +16,11 @@ String buildURL(mapLocation){
   return url;
 }
 
-Future<Arrival> fetchArrival(location) async {
-  String url = buildURL(41220); //hard coded for now
+Future<Arrival> fetchArrival(stationID) async {
+  if(stationID == null){
+    stationID = 41700;
+  }
+  String url = buildURL(stationID); //hard coded for now
   final response = await http.get(url);
   final responseJson = json.decode(response.body);
   return new Arrival.fromJson(responseJson);
