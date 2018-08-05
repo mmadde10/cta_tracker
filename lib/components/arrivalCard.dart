@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cta_tracker/styles/color.dart';
-import '../../actions/time.dart';
+import 'package:cta_tracker/actions/time.dart';
 
 Card getStructuredGridCell(data){
   return new Card(

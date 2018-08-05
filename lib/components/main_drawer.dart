@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cta_tracker/styles/color.dart';
-import '../../actions/stations.dart';
-import '../home_screen.dart';
+import 'package:cta_tracker/actions/stations.dart';
+import 'package:cta_tracker/screens/home_screen.dart';
 
 class MainDrawer extends StatelessWidget{
   @override

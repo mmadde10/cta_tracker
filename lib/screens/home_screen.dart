@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:cta_tracker/screens/components/main_drawer.dart';
+import 'package:cta_tracker/components/main_drawer.dart';
 import 'package:cta_tracker/middleware/arrival_data.dart';
-import 'package:cta_tracker/screens/components/loading_screen.dart';
-import 'components/station_gridview.dart';
+import 'package:cta_tracker/components/loading_screen.dart';
+import 'package:cta_tracker/components/station_gridview.dart';
 import 'error_screens/http_error.dart';
 
 class HomeLocationPage extends StatefulWidget {

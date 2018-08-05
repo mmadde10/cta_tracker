@@ -1,4 +1,4 @@
-import '../screens/components/main_drawer.dart';
+import 'package:cta_tracker/components/main_drawer.dart';
 
 final List<dynamic> data = <dynamic>[
   Entry(

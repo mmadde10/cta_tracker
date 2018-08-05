@@ -15,7 +15,6 @@ config.dart
 *.log
 *.pyc
 *.swp
-.DS_Store
 .atom/
 .buildlog/
 .history
@@ -26,10 +25,8 @@ config.dart
 *.ipr
 *.iws
 .idea/
-.idea/libraries/
 
 # User-specific stuff
-.idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
@@ -44,7 +41,6 @@ config.dart
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
-.idea/workspace.xml
 
 
 # Visual Studio Code related
@@ -64,12 +60,7 @@ version
 
 # Flutter/Dart/Pub related
 **/doc/api/
-.dart_tool/
-.flutter-plugins
-.packages
 .pub-cache/
-.pub/
-build/
 flutter_*.png
 linked_*.ds
 unlinked.ds
@@ -116,7 +107,4 @@ unlinked_spec.ds
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
-
-
-*.log
-pubspec.lock
+ios/Frameworks/

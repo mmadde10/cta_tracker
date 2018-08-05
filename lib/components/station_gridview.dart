@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:cta_tracker/styles/color.dart';
-import '../../actions/time.dart';
+import 'package:cta_tracker/actions/time.dart';
 
 List<StaggeredTile> addStaggeredTiles(snapshot){
 
