@@ -5,17 +5,11 @@ import 'package:cta_tracker/middleware/arrival_data.dart';
 import 'package:cta_tracker/components/loading_screen.dart';
 import 'package:cta_tracker/components/station_gridview.dart';
 import 'error_screens/http_error.dart';
+import 'package:cta_tracker/components/homeGridview.dart';
 
-class HomeLocationPage extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   final int stationID;
-  HomeLocationPage(this.stationID);
-  @override
-  HomeLocationPageState createState() => new HomeLocationPageState(stationID);
-}
-
-class HomeLocationPageState extends State<HomeLocationPage> {
-  final int stationID;
-  HomeLocationPageState(this.stationID);
+  HomeScreen(this.stationID);
   @override
   Widget build(BuildContext context) {
       return new Container(
@@ -46,6 +40,7 @@ class HomeLocationPageState extends State<HomeLocationPage> {
 class HomePage extends StatelessWidget {
   final String title;
   final int stationID;
+   final HomeGridView homeGridView = new HomeGridView();
 
   HomePage({Key key,this.title, this.stationID}) : super(key: key);
 
@@ -56,9 +51,7 @@ class HomePage extends StatelessWidget {
       appBar: new AppBar(
         title: new Text(title),
       ),
-      body: new Container(
-        child: HomeLocationPage(stationID),
-      ),
-    );
+      body: homeGridView,
+      );
   }
 }

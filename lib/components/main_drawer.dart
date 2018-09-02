@@ -39,8 +39,6 @@ class EntryItem extends StatefulWidget {
   }
 }
 
-
-
 // Displays one Entry. If the entry has children then it's displayed
 // with an ExpansionTile.
 class _EntryItemState extends State<EntryItem> {
